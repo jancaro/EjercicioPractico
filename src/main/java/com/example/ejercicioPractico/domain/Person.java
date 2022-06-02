@@ -1,6 +1,7 @@
 package com.example.ejercicioPractico.domain;
 
-import com.example.ejercicioPractico.domain.enums.Genero;
+import com.example.ejercicioPractico.domain.enums.Gender;
+
 import javax.persistence.*;
 
 import lombok.*;
@@ -13,28 +14,28 @@ import org.hibernate.annotations.GenericGenerator;
 @AllArgsConstructor
 @SuperBuilder
 @MappedSuperclass
-public class Persona {
+public class Person {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
 
     @Column
-    private String nombre;
+    private String name;
 
     @Column
-    private int edad;
+    private int age;
 
     @Column
     @Enumerated(EnumType.STRING)
-    private Genero genero;
+    private Gender gender;
 
     @Column
-    private String identificacion;
+    private String identification;
 
     @Column
-    private String direccion;
+    private String direction;
 
     @Column
-    private String telefono;
+    private String phone;
 }

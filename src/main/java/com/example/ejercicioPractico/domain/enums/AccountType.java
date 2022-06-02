@@ -1,6 +1,6 @@
 package com.example.ejercicioPractico.domain.enums;
 
-public enum TipoCuenta {
+public enum AccountType {
     AHORRO,
-    CORRIENTE;
+    CORRIENTE
 }

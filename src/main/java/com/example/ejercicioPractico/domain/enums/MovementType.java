@@ -1,6 +1,6 @@
 package com.example.ejercicioPractico.domain.enums;
 
-public enum TipoMovimiento {
+public enum MovementType {
     DEBITO,
-    CREDITO;
+    CREDITO
 }

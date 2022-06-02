@@ -3,7 +3,8 @@ package com.example.ejercicioPractico.domain;
 import java.util.Date;
 import java.math.BigDecimal;
 import javax.persistence.*;
-import com.example.ejercicioPractico.domain.enums.TipoMovimiento;
+
+import com.example.ejercicioPractico.domain.enums.MovementType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,26 +14,26 @@ import org.hibernate.annotations.GenericGenerator;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Movimiento {
+public class Movement {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
 
     @Column
-    private Date fecha;
+    private Date date;
 
     @Column
     @Enumerated(EnumType.STRING)
-    private TipoMovimiento tipoMovimiento;
+    private MovementType movementType;
 
     @Column
-    private BigDecimal valor;
+    private BigDecimal amount;
 
     @Column
-    private BigDecimal saldo;
+    private BigDecimal balance;
 
     @ManyToOne
-    @JoinColumn(name = "cuenta_id", referencedColumnName = "id")
-    private Cuenta cuenta;
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    private Account account;
 }

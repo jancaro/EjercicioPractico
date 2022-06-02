@@ -1,6 +1,7 @@
-package com.example.ejercicioPractico.servicio;
+package com.example.ejercicioPractico.services;
 
-import com.example.ejercicioPractico.domain.vo.ReporteVo;
+import com.example.ejercicioPractico.domain.Client;
+import com.example.ejercicioPractico.domain.vo.ReportVo;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -8,32 +9,27 @@ import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.List;
 import java.io.*;
 import java.util.stream.Stream;
 
-import com.example.ejercicioPractico.domain.Cliente;
-import com.example.ejercicioPractico.repositorio.ClienteRepositorio;
+import com.example.ejercicioPractico.repository.ClientRepository;
 
 @Service
-public class ReporteServicio {
+public class ReportService {
     @Autowired
-    private MovimientoServicio movimientoServicio;
+    private MovementService movementService;
 
     @Autowired
-    private ClienteRepositorio clienteRepositorio;
+    private ClientRepository clientRepository;
 
-    public String generateReporteMovimientosPdf(String clienteId, Long fechaDesde, Long fechaHasta) throws IOException, DocumentException {
-        Cliente cliente = this.clienteRepositorio.findById(clienteId).orElse(null);
-        List<ReporteVo> movimientos = this.movimientoServicio.getMovimientos(clienteId, fechaDesde, fechaHasta);
+    public String generateReportMovementsPdf(String clientId, Long dateFrom, Long dateTo) throws DocumentException {
+        Client client = this.clientRepository.findById(clientId).orElse(null);
+        List<ReportVo> movements = this.movementService.getMovements(clientId, dateFrom, dateTo);
 
-        if (cliente != null && movimientos != null) {
+        if (client != null && movements != null) {
             Document document = new Document();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             PdfWriter.getInstance(document, baos);
@@ -41,7 +37,7 @@ public class ReporteServicio {
             document.open();
             PdfPTable table = new PdfPTable(8);
             addTableHeader(table);
-            movimientos.forEach(movimiento -> addRows(table, movimiento));
+            movements.forEach(movement -> addRows(table, movement));
             document.add(table);
             document.close();
             ByteArrayInputStream pdfStream = new ByteArrayInputStream(baos.toByteArray());
@@ -63,14 +59,14 @@ public class ReporteServicio {
                 });
     }
 
-    private void addRows(PdfPTable table, ReporteVo reporteVo) {
-        table.addCell(reporteVo.getFechaMovimiento().toString());
-        table.addCell(reporteVo.getNombreCliente());
-        table.addCell(reporteVo.getNumeroCuenta());
-        table.addCell(reporteVo.getTipoMovimiento().name());
-        table.addCell(reporteVo.getSaldoInicial().toString());
-        table.addCell(reporteVo.getEstadoCuenta().toString());
-        table.addCell(reporteVo.getMontoMovimiento().toString());
-        table.addCell(reporteVo.getSaldoActual().toString());
+    private void addRows(PdfPTable table, ReportVo reportVo) {
+        table.addCell(reportVo.getMovementDate().toString());
+        table.addCell(reportVo.getClientName());
+        table.addCell(reportVo.getAccountNumber());
+        table.addCell(reportVo.getMovementType().name());
+        table.addCell(reportVo.getInitialBalance().toString());
+        table.addCell(reportVo.getAccountStatus().toString());
+        table.addCell(reportVo.getMovementAmount().toString());
+        table.addCell(reportVo.getCurrentBalance().toString());
     }
 }

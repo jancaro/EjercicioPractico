@@ -1,6 +1,6 @@
 package com.example.ejercicioPractico.rest;
 
-import com.example.ejercicioPractico.servicio.CuentaServicio;
+import com.example.ejercicioPractico.services.ClientService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -12,22 +12,21 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-@WebMvcTest(ApiCuenta.class)
+import static org.junit.jupiter.api.Assertions.*;
+@WebMvcTest(ApiClient.class)
 @ExtendWith(SpringExtension.class)
-public class ApiCuentaTest {
+class ApiClientTest {
     @Autowired
     MockMvc mockMvc;
 
     @MockBean
-    CuentaServicio cuentaServicio;
+    ClientService clientService;
 
     @Test
     public void testDeleteApi() throws Exception {
         String id = "1234";
-        Mockito.when(cuentaServicio.deleteCuenta(id)).thenReturn(true);
-        mockMvc.perform(MockMvcRequestBuilders.delete("/cuentas/"+id)).
+        Mockito.when(clientService.deleteClient(id)).thenReturn(true);
+        mockMvc.perform(MockMvcRequestBuilders.delete("/clientes/"+id)).
                 andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(result -> assertEquals("true", result.getResponse().getContentAsString()));
     }

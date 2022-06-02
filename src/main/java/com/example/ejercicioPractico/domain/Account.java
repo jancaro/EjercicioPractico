@@ -3,7 +3,7 @@ package com.example.ejercicioPractico.domain;
 import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.*;
-import com.example.ejercicioPractico.domain.enums.TipoCuenta;
+import com.example.ejercicioPractico.domain.enums.AccountType;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,29 +14,29 @@ import org.hibernate.annotations.GenericGenerator;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Cuenta {
+public class Account {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
 
     @Column
-    private String numeroCuenta;
+    private String accountNumber;
 
     @Column
     @Enumerated(EnumType.STRING)
-    private TipoCuenta tipoCuenta;
+    private AccountType accountType;
 
     @Column
-    private BigDecimal saldoInicial;
+    private BigDecimal initialBalance;
 
     @Column
-    private Boolean estado;
+    private Boolean status;
 
     @ManyToOne
-    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
-    private Cliente cliente;
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
+    private Client client;
 
-    @OneToMany(mappedBy = "cuenta", cascade = CascadeType.ALL)
-    private List<Movimiento> movimientos;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Movement> movements;
 }

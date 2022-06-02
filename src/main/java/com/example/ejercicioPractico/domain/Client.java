@@ -12,14 +12,14 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class Cliente extends Persona {
+public class Client extends Person {
     
     @Column(nullable = false)
-    private String contrasena;
+    private String password;
 
     @Column
-    private Boolean estado;
+    private Boolean status;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<Cuenta> cuentas;
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<Account> accounts;
 }
