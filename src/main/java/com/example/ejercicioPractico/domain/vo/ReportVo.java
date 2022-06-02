@@ -2,6 +2,7 @@ package com.example.ejercicioPractico.domain.vo;
 
 import com.example.ejercicioPractico.domain.enums.MovementType;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -11,14 +12,15 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ReportVo {
-    private Date movementDate;
-    private String clientName;
-    private String accountNumber;
-    private MovementType movementType;
-    private BigDecimal initialBalance;
-    private Boolean accountStatus;
-    private BigDecimal movementAmount;
-    private BigDecimal currentBalance;
+    Date movementDate;
+    String clientName;
+    String accountNumber;
+    MovementType movementType;
+    BigDecimal initialBalance;
+    Boolean accountStatus;
+    BigDecimal movementAmount;
+    BigDecimal currentBalance;
 
 }

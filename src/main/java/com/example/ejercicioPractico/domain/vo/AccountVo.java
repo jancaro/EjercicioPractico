@@ -2,6 +2,7 @@ package com.example.ejercicioPractico.domain.vo;
 
 import com.example.ejercicioPractico.domain.enums.AccountType;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 
@@ -10,9 +11,11 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class AccountVo {
-    private String accountNumber;
-    private AccountType accountType;
-    private BigDecimal initialBalance;
-    private Boolean status;
+    String id;
+    String accountNumber;
+    AccountType accountType;
+    BigDecimal initialBalance;
+    Boolean status;
 }

@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Jose Lema\",\r\n    \"edad\": 30,\r\n    \"genero\": \"MASCULINO\",\r\n    \"identificacion\": \"1753412871\",\r\n    \"direccion\": \"Otavalo sn y principal\",\r\n    \"telefono\": \"098254785\",\r\n    \"contrasena\": \"1234\",\r\n    \"estado\": true\r\n}",
+							"raw": "{\r\n    \"name\": \"Jose Lema\",\r\n    \"age\": 30,\r\n    \"gender\": \"MASCULINO\",\r\n    \"identification\": \"1753412877\",\r\n    \"direction\": \"Otavalo sn y principal\",\r\n    \"phone\": \"098254785\",\r\n    \"password\": \"1234\",\r\n    \"status\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -79,7 +79,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Jose Ricardo Lema\",\r\n    \"edad\": 36,\r\n    \"genero\": \"MASCULINO\",\r\n    \"identificacion\": \"1753412871\",\r\n    \"direccion\": \"Otavalo sn y principal Oe 45\",\r\n    \"telefono\": \"098254785\",\r\n    \"contrasena\": \"1234\",\r\n    \"estado\": true\r\n}",
+							"raw": "{\r\n    \"name\": \"Jose Ricardo Lema\",\r\n    \"age\": 36,\r\n    \"gender\": \"MASCULINO\",\r\n    \"identification\": \"1753412871\",\r\n    \"direction\": \"Otavalo sn y principal Oe 45\",\r\n    \"phone\": \"098254785\",\r\n    \"password\": \"1234\",\r\n    \"status\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -131,7 +131,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"numeroCuenta\": \"478758\",\r\n    \"tipoCuenta\": \"AHORRO\",\r\n    \"saldoInicial\": 2000,\r\n    \"estado\": true\r\n}",
+							"raw": "{\r\n    \"accountNumber\": \"478758\",\r\n    \"accountType\": \"AHORRO\",\r\n    \"initialBalance\": 2000,\r\n    \"status\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -160,7 +160,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"numeroCuenta\": \"585545\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldoInicial\": 1000,\r\n    \"estado\": true\r\n}",
+							"raw": "{\r\n    \"accountNumber\": \"585545\",\r\n    \"accountType\": \"CORRIENTE\",\r\n    \"initialBalance\": 1000,\r\n    \"status\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -228,7 +228,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"numeroCuenta\": \"000478758\",\r\n    \"tipoCuenta\": \"AHORRO\",\r\n    \"saldoInicial\": 2010,\r\n    \"estado\": true\r\n}",
+							"raw": "{\r\n    \"accountNumber\": \"000478758\",\r\n    \"accountType\": \"AHORRO\",\r\n    \"initialBalance\": 2010,\r\n    \"status\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -283,7 +283,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fecha\": \"2022-05-20T19:00:06\",\r\n    \"tipoMovimiento\": \"DEBITO\",\r\n    \"valor\": 10\r\n}",
+							"raw": "{\r\n    \"date\": \"2022-05-20T19:00:06\",\r\n    \"movementType\": \"DEBITO\",\r\n    \"amount\": 10\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -312,7 +312,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fecha\": \"2022-06-04T19:00:04\",\r\n    \"tipoMovimiento\": \"CREDITO\",\r\n    \"valor\": 50\r\n}",
+							"raw": "{\r\n    \"date\": \"2022-06-04T19:00:04\",\r\n    \"movementType\": \"CREDITO\",\r\n    \"amount\": 50\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

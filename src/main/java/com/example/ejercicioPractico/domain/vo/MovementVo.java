@@ -2,6 +2,7 @@ package com.example.ejercicioPractico.domain.vo;
 
 import com.example.ejercicioPractico.domain.enums.MovementType;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -11,9 +12,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class MovementVo {
-    private Date date;
-    private MovementType movementType;
-    private BigDecimal amount;
-    private BigDecimal balance;
+    Date date;
+    MovementType movementType;
+    BigDecimal amount;
+    BigDecimal balance;
 }

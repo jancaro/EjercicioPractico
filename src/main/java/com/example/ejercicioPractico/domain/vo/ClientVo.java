@@ -10,6 +10,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ClientVo {
+    String id;
     String name;
     int age;
     Gender gender;
