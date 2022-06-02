@@ -15,10 +15,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import javax.transaction.Transactional;
 
 import com.example.ejercicioPractico.domain.Account;
@@ -41,7 +38,7 @@ public class MovementService {
     @Autowired
     private MovementMapper movementMapper;
 
-    public String saveMovement(MovementVo movementVo, String accountId) {
+    public Map<String, Object> saveMovement(MovementVo movementVo, String accountId) {
         Optional<Account> account = this.accountRepository.findById(accountId);
         if (account.isPresent()) {
             if (account.get().getStatus()) {
@@ -67,7 +64,9 @@ public class MovementService {
                 movement.setBalance(balance);
                 movement.setAccount(account.get());
                 Movement savedMovement = this.movementRepository.save(movement);
-                return savedMovement.getBalance().toString();
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("result", savedMovement.getBalance().toString());
+                return map;
             } else  {
                 throw new TransactionNotFoundException("Cuenta en estado false.");
             }

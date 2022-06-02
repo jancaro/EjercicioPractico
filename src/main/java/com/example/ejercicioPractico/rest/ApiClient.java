@@ -1,6 +1,7 @@
 package com.example.ejercicioPractico.rest;
 
 import java.util.List;
+import java.util.Map;
 
 import com.example.ejercicioPractico.domain.vo.ClientVo;
 import com.example.ejercicioPractico.services.ClientService;
@@ -17,7 +18,7 @@ public class ApiClient {
     private ClientService clientService;
 
     @PostMapping("")
-    public ResponseEntity<String> saveClient(@RequestBody ClientVo clientVo) {
+    public ResponseEntity<Map<String, Object>> saveClient(@RequestBody ClientVo clientVo) {
         return ResponseEntity.ok(this.clientService.saveClient(clientVo));
     }
 
@@ -32,7 +33,7 @@ public class ApiClient {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<String> updateClient(@RequestBody ClientVo clientVo, @PathVariable("id") String id) {
+    public ResponseEntity<Map<String, Object>> updateClient(@RequestBody ClientVo clientVo, @PathVariable("id") String id) {
         return ResponseEntity.ok(this.clientService.updateClient(clientVo, id));
     }
 

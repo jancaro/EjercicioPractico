@@ -1,6 +1,7 @@
 package com.example.ejercicioPractico.rest;
 
 import java.util.List;
+import java.util.Map;
 
 import com.example.ejercicioPractico.domain.vo.AccountVo;
 import com.example.ejercicioPractico.services.AccountService;
@@ -16,7 +17,7 @@ public class ApiAccount {
     private AccountService accountService;
 
     @PostMapping("cliente/{clientId}")
-    public ResponseEntity<String> saveAccount(@RequestBody AccountVo cuenta, @PathVariable("clientId") String clientId) {
+    public ResponseEntity<Map<String, Object>> saveAccount(@RequestBody AccountVo cuenta, @PathVariable("clientId") String clientId) {
         return ResponseEntity.ok(this.accountService.saveAccount(cuenta, clientId));
     }
 
@@ -31,7 +32,7 @@ public class ApiAccount {
     }
 
     @PutMapping("cliente/{clientId}/accountVo/{accountId}")
-    public ResponseEntity<String> updateAccount(@RequestBody AccountVo accountVo, @PathVariable("clientId") String clientId, @PathVariable("accountId") String accountId) {
+    public ResponseEntity<Map<String, Object>> updateAccount(@RequestBody AccountVo accountVo, @PathVariable("clientId") String clientId, @PathVariable("accountId") String accountId) {
         return ResponseEntity.ok(this.accountService.updateAccount(accountVo, clientId, accountId));
     }
 

@@ -1,6 +1,7 @@
 package com.example.ejercicioPractico.rest;
 
 import java.util.List;
+import java.util.Map;
 
 import com.example.ejercicioPractico.domain.vo.MovementVo;
 import com.example.ejercicioPractico.domain.vo.ReportVo;
@@ -17,7 +18,7 @@ public class ApiMovement {
     private MovementService movementService;
 
     @PostMapping("cuenta/{accountId}")
-    public ResponseEntity<String> saveMovement(@RequestBody MovementVo movementVo, @PathVariable("accountId") String accountId) {
+    public ResponseEntity<Map<String, Object>> saveMovement(@RequestBody MovementVo movementVo, @PathVariable("accountId") String accountId) {
         return ResponseEntity.ok(this.movementService.saveMovement(movementVo, accountId));
     }
 

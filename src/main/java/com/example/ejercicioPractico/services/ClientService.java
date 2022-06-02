@@ -7,7 +7,9 @@ import com.example.ejercicioPractico.exceptions.TransactionNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.transaction.Transactional;
 
@@ -22,21 +24,25 @@ public class ClientService {
     @Autowired
     ClientMapper clientMapper;
 
-    public String saveClient(ClientVo clientVo) {
+    public Map<String, Object> saveClient(ClientVo clientVo) {
         Client savedClient = this.clientRepository.findByIdentification(clientVo.getIdentification());
         if (savedClient == null) {
             Client newClient = clientMapper.toClient(clientVo);
-            return clientRepository.save(newClient).getId();
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("result", clientRepository.save(newClient).getId());
+            return map;
         } else {
             throw new TransactionNotFoundException("Cliente con identificación duplicada.");
         }
     }
 
-    public String updateClient(ClientVo clientVo, String id) {
+    public Map<String, Object> updateClient(ClientVo clientVo, String id) {
         if (this.clientRepository.existsById(id)) {
             Client updatedClient = clientMapper.toClient(clientVo);
             updatedClient.setId(id);
-            return clientRepository.save(updatedClient).getId();
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("result", clientRepository.save(updatedClient).getId());
+            return map;
         } else {
             throw new TransactionNotFoundException("Cliente ingresado no existe");
         }
