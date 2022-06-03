@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
 import java.io.*;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import com.example.ejercicioPractico.repository.ClientRepository;
@@ -25,7 +27,7 @@ public class ReportService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public String generateReportMovementsPdf(String clientId, Long dateFrom, Long dateTo) throws DocumentException {
+    public Map<String, Object> generateReportMovementsPdf(String clientId, Long dateFrom, Long dateTo) throws DocumentException {
         Client client = this.clientRepository.findById(clientId).orElse(null);
         List<ReportVo> movements = this.movementService.getMovements(clientId, dateFrom, dateTo);
 
@@ -42,7 +44,9 @@ public class ReportService {
             document.close();
             ByteArrayInputStream pdfStream = new ByteArrayInputStream(baos.toByteArray());
             byte[] archivo = Base64.getEncoder().encode(pdfStream.readAllBytes());
-            return new String(archivo, StandardCharsets.UTF_8);
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("result", new String(archivo, StandardCharsets.UTF_8));
+            return map;
         } else {
             throw new RuntimeException("No existen movimientos.");
         }

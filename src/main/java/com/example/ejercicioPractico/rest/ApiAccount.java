@@ -31,7 +31,7 @@ public class ApiAccount {
         return ResponseEntity.ok(this.accountService.getAccountById(id));
     }
 
-    @PutMapping("cliente/{clientId}/accountVo/{accountId}")
+    @PutMapping("cliente/{clientId}/cuenta/{accountId}")
     public ResponseEntity<Map<String, Object>> updateAccount(@RequestBody AccountVo accountVo, @PathVariable("clientId") String clientId, @PathVariable("accountId") String accountId) {
         return ResponseEntity.ok(this.accountService.updateAccount(accountVo, clientId, accountId));
     }
